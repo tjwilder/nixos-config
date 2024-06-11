@@ -18,14 +18,7 @@
 	{
 	  home-manager.useGlobalPkgs = true;
 	  home-manager.useUserPackages = true;
-	  home-manager.users.tj = { pkgs, ... }: {
-		  home.packages = [ pkgs.atool pkgs.httpie ];
-		  #programs.bash.enable = true;
-
-		  # The state version is required and should stay at the version you
-		  # originally installed.
-		  home.stateVersion = "24.05";
-		};
+	  home-manager.users.tj = import ./home.nix;
 	  # Optionally use home-manager.extraSpecialArgs to pass
 	  # arguments to home.nix
 	}
