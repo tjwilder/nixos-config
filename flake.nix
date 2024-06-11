@@ -12,6 +12,7 @@
       modules = [
 	# Load the default configuration.nix
         ./configuration.nix
+	./home-manager/flake.nix
       ];
     };
   };
