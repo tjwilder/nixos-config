@@ -14,10 +14,10 @@
       modules = [
 	# Load the default configuration.nix
         ./configuration.nix
-	home-manager.nixosModule.home-manager
+	home-manager.nixosModules.home-manager
 	{
 	  home-manager.useGlobalPkgs = true;
-	  home-manager.userUserPackages = true;
+	  home-manager.useUserPackages = true;
 	  home-manager.users.tj = import ./home.nix;
 	  # Optionally use home-manager.extraSpecialArgs to pass
 	  # arguments to home.nix
