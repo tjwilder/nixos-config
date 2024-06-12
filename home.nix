@@ -1,10 +1,11 @@
 { config, pkgs, ... }:
 
 {
+  home.packages = [ pkgs.httpie pkgs.xdg-utils ];
   # Home Manager needs a bit of information about you and the
   # paths it should manage.
-  home.username = "jdoe";
-  home.homeDirectory = "/home/jdoe";
+  home.username = "tj";
+  home.homeDirectory = "/home/tj";
 
   # This value determines the Home Manager release that your
   # configuration is compatible with. This helps avoid breakage
@@ -18,4 +19,5 @@
 
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
+  #programs.xdg-utils.enable = true;
 }
