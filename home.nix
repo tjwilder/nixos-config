@@ -48,6 +48,10 @@
 
     # Dev
     unityhub
+    isoimagewriter
+    ventoy
+    # Cloud
+    (google-cloud-sdk.withExtraComponents [google-cloud-sdk.components.gke-gcloud-auth-plugin])
   ];
   # Home Manager needs a bit of information about you and the
   # paths it should manage.

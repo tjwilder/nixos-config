@@ -2,7 +2,7 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
-{ inputs, config, lib, pkgs, ... }:
+{ inputs, config, lib, nixpkgs, pkgs, ... }:
 
 {
   imports =
@@ -86,8 +86,8 @@
   # services.xserver.libinput.enable = true;
 
   # Enable the KDE Plasma Desktop Environment.
-  # services.displayManager.sddm.enable = true;
-  # services.displayManager.sddm.wayland.enable = true;
+  #services.displayManager.sddm.enable = true;
+  #services.displayManager.sddm.wayland.enable = true;
   #services.desktopManager.plasma6.enable = true;
 
   # Enable cinnamon desktop
@@ -98,27 +98,28 @@
   security.polkit.enable = true;
   
 
-	#  xdg = {
-	#   autostart.enable = true;
-	#   portal = {
-	#      config.common.default = [ "*" ];
-	#      xdgOpenUsePortal = true;
-	#     enable = true;
-	#     extraPortals = [
-	#       pkgs.xdg-desktop-portal
-	#       # pkgs.xdg-desktop-portal-gtk # Duplicated under cinnamon
-	#       pkgs.xdg-desktop-portal-wlr
-	#        pkgs.xdg-desktop-portal-hyprland
-	#     ];
-	#   };
-	# };
+	xdg = {
+	  autostart.enable = true;
+	  portal = {
+	     config.common.default = [ "*" ];
+	     xdgOpenUsePortal = true;
+	    enable = true;
+	    extraPortals = [
+	      pkgs.xdg-desktop-portal
+	      # pkgs.xdg-desktop-portal-gtk # Duplicated under cinnamon
+	      pkgs.xdg-desktop-portal-wlr
+	       pkgs.xdg-desktop-portal-hyprland
+	    ];
+	  };
+	};
 
 
   # NVIDIA GPU
   services.xserver.enable = true;
-  services.xserver.videoDrivers = [ "nouveau" ];
-  # boot.initrd.kernelModules = [ "nvidia" ];
-  boot.kernelModules = [ "nouveau" ];
+  services.xserver.videoDrivers = [ "nvidia" ];
+  #services.xserver.videoDrivers = [ "nouveau" ];
+  #boot.initrd.kernelModules = [ "nvidia" ];
+  #boot.kernelModules = [ "nouveau" ];
   #boot.extraModulePackages = [ config.boot.kernelPackages.nvidia_x11 ];
 
   # Disable Intel Integrated GPU
@@ -213,6 +214,9 @@
     wget
     brave
   ];
+    # # <-- Snip -->
+    # environment.systemPackages = with pkgs; [
+    # ]
 
   programs.steam = {
     enable = true;
@@ -269,6 +273,7 @@ systemd.services."backup-unity" = {
     User = "tj";
   };
 };
+
 
   # Open ports in the firewall.
   # networking.firewall.allowedTCPPorts = [ ... ];

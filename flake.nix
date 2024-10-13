@@ -33,21 +33,21 @@
         inherit pkgs;
         specialArgs = {
           inherit inputs;
-    };
-      modules = [
-        # Load the default configuration.nix
-        ./configuration.nix
-        home-manager.nixosModules.home-manager
-        {
-          home-manager.useGlobalPkgs = true;
-          home-manager.useUserPackages = true;
-          home-manager.backupFileExtension = ".bak";
-          home-manager.users.tj = import ./home.nix;
-          # Optionally use home-manager.extraSpecialArgs to pass
-          # arguments to home.nix
-        }
-      ];
+        };
+        modules = [
+          # Load the default configuration.nix
+          ./configuration.nix
+          home-manager.nixosModules.home-manager
+          {
+            home-manager.useGlobalPkgs = true;
+            home-manager.useUserPackages = true;
+            home-manager.backupFileExtension = ".bak";
+            home-manager.users.tj = import ./home.nix;
+            # Optionally use home-manager.extraSpecialArgs to pass
+            # arguments to home.nix
+          }
+        ];
       
-    };
-  };
+      };
+   };
 }
